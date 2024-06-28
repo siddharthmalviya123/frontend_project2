@@ -1,6 +1,6 @@
 const mysql= require('mysql')
 const dotenv= require('dotenv')
-
+let instance =null;
 dotenv.config();
 
 const connection = mysql.createConnection({
@@ -17,5 +17,15 @@ connection.connect((err)=>{
             console.log(err.message);
         }
 
-        console.log("db connected")
+        console.log("db conn - " + connection.state)
 })
+
+class DbService {
+
+    static getDbServiceInstance()
+    {
+        return instance? instance : new DbService();
+    }
+}
+
+module.exports = DbService;
