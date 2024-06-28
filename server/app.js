@@ -13,13 +13,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended :false}));
 
 //create
-app.post('/insert' , (req,res)=>{
+app.post('/insert', (request, response) => {
+    const { name } = request.body;
+    const db = dbService.getDbServiceInstance();
+    
+    const result = db.insertNewName(name);
 
-})
+    result
+    .then(data => response.json({ data: data}))
+    .catch(err => console.log(err));
+});
 
 //read
-app.get('/getAll' ,(req,res)=>{
-    console.log("tested");
+app.get('/getAll' ,(request,response)=>{
+
+    const db = dbService.getDbServiceInstance();
+    const result = db.getAllData();
+  //result is a promise
+    result
+    .then(data =>response.json({data :data}))
+    .catch(err => console.log(err));
 })
 
 //update
@@ -28,6 +41,6 @@ app.get('/getAll' ,(req,res)=>{
 // /delete
 
 
-app.listen(process.env.PORT , ()=>{
+app.listen((process.env.PORT ) , ()=>{
     console.log("server running")
 })
