@@ -1,11 +1,11 @@
-/* Reset default margin and padding */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  /* Body styles */
+  
   body {
     font-family: Arial, sans-serif;
     background-image: url("https://static.vecteezy.com/system/resources/thumbnails/008/058/793/small/abstract-blur-with-bokeh-light-for-background-usage-vector.jpg");
@@ -13,23 +13,22 @@
     background-position: center;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center; 
     margin: 0;
   }
-  
-  /* Main container styles */
+
   main {
     width: 90%;
     max-width: 600px;
-    margin: 20px auto; /* Center the main container */
+    margin: 20px auto; 
     background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  /* Heading styles */
+  
   #topic {
     text-align: center;
     margin-bottom: 20px;
@@ -37,7 +36,7 @@
     color: #333;
   }
   
-  /* Input and button styles */
+  
   input[type="text"], button {
     padding: 8px 12px;
     margin: 5px;
@@ -57,7 +56,7 @@
     background-color: #45a049;
   }
   
-  /* Table styles */
+  
   table {
     width: 100%;
     margin-top: 20px;
@@ -76,7 +75,7 @@
   }
   
 
-  /* Responsive adjustments */
+  
   @media screen and (max-width: 600px) {
     main {
       width: 100%;
