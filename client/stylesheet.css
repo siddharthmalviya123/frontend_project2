@@ -1,33 +1,93 @@
-main{
-    width: 50%;
-    margin: 50px auto;
-    text-align: center;
-
-}
-table{
-    margin : 50px auto;
-}
-table , th, td{
-    border-collapse: collapse;
-    border: 1px solid black;
-}
-
-th ,td{
-    padding :5px;
-}
-
-#topic
-{
-    text-align:center;
-
-}
-
-body {
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: Arial, sans-serif;
     background-image: url("https://static.vecteezy.com/system/resources/thumbnails/008/058/793/small/abstract-blur-with-bokeh-light-for-background-usage-vector.jpg");
-    background-size: cover; 
-    background-position: center; 
-    background-color: #f0f0f0; 
+    background-size: cover;
+    background-position: center;
     height: 100vh;
-    margin: 0; 
-    background-attachment: fixed;
-}
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 0;
+  }
+  
+  /* Main container styles */
+  main {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto; /* Center the main container */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  #topic {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  /* Input and button styles */
+  input[type="text"], button {
+    padding: 8px 12px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Table styles */
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* Section for update row */
+  #update-row {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 600px) {
+    main {
+      width: 100%;
+      margin: 10px;
+    }
+  }
+  
