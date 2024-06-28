@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded' , function ()
 {
-    fetch('http://localhost:5000/getAll')
+    fetch('https://frontend-project2.onrender.com/getAll')
     .then(response=>response.json())
     .then(data =>  loadHTMLTable(data['data']));
 });
@@ -31,7 +31,7 @@ searchBtn.addEventListener('click', function()
     const searchValue = document.querySelector('#search-input').value;
     if(searchValue)
         {
-            fetch('http://localhost:5000/search/'+ searchValue)
+            fetch('https://frontend-project2.onrender.com/search/'+ searchValue)
             .then(response=>response.json())
             .then(data =>  loadHTMLTable(data['data']));
         }
@@ -43,7 +43,7 @@ searchBtn.addEventListener('click', function()
 
 function deleteRowById(id)
 {
-    fetch("http://localhost:5000/delete/"+id , {
+    fetch("https://frontend-project2.onrender.com/delete/"+id , {
         method : 'DELETE'
     })
     .then(response=>response.json())
@@ -69,7 +69,7 @@ console.log("update button clicked");
 const updateNameInput = document.querySelector('#update-name-input');
 
 console.log(updateNameInput.value);
-fetch('http://localhost:5000/update' , {
+fetch('https://frontend-project2.onrender.com/update' , {
     method :'PATCH',
     headers :{
         'Content-type': 'application/json'
@@ -102,7 +102,7 @@ addBtn.addEventListener("click",function (){
     nameInput.value= "";
 console.log("second clicked")
 
-    fetch('http://localhost:5000/insert', {
+    fetch('https://frontend-project2.onrender.com/insert', {
         headers:{
             'Content-type': 'application/json'
         },
