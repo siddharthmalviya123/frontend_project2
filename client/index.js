@@ -16,8 +16,30 @@ if(event.target.className === "delete-row-btn")
     }
 
 //edit
+else if(event.target.className === "edit-row-btn")
+    {
+        handleEditRow(event.target.dataset.id);
+    }
 })
 
+const updateBtn = document.querySelector('#update-row-btn');
+const searchBtn = document.querySelector('#search-btn');
+
+searchBtn.addEventListener('click', function()
+{
+  
+    const searchValue = document.querySelector('#search-input').value;
+    if(searchValue)
+        {
+            fetch('http://localhost:5000/search/'+ searchValue)
+            .then(response=>response.json())
+            .then(data =>  loadHTMLTable(data['data']));
+        }
+    else{
+        alert("add some value");
+    }
+   
+})
 
 function deleteRowById(id)
 {
@@ -33,6 +55,41 @@ function deleteRowById(id)
     })
 }
 
+function handleEditRow(id)
+{
+    const updateSection = document.querySelector('#update-row');
+    updateSection.hidden= false;
+     document.querySelector('#update-name-input').dataset.id = id;
+
+}
+
+updateBtn.addEventListener('click', function()
+{
+console.log("update button clicked");
+const updateNameInput = document.querySelector('#update-name-input');
+
+console.log(updateNameInput.value);
+fetch('http://localhost:5000/update' , {
+    method :'PATCH',
+    headers :{
+        'Content-type': 'application/json'
+    },
+    body : JSON.stringify(
+        {
+            id: updateNameInput.dataset.id,
+            name: updateNameInput.value
+        }
+    )
+})
+.then((response=> response.json()))
+.then(data=>{
+    if(data.success)
+        {
+            location.reload();
+        }
+})
+
+})
 
 
 const addBtn= document.querySelector('#add-name-btn');
@@ -78,7 +135,7 @@ function insertRowIntoTable (data)
         }
     
         tableHtml += `<td><button class="delete-row-btn" data-id=${data.id}>delete</button></td>`;
-        tableHtml += `<td><button class="delete-row-btn" data-id=${data.id}>edit</button></td>`;
+        tableHtml += `<td><button class="edit-row-btn" data-id=${data.id}>edit</button></td>`;
     
     tableHtml +="</tr>"
 
@@ -115,7 +172,7 @@ function loadHTMLTable(data)
             tableHtml += `<td>${name}</td>`;
             tableHtml += `<td>${new Date(date_added).toLocaleString()}</td>`;
             tableHtml += `<td><button class="delete-row-btn" data-id=${id}>delete</button></td>`;
-            tableHtml += `<td><button class="delete-row-btn" data-id=${id}>edit</button></td>`;
+            tableHtml += `<td><button class="edit-row-btn" data-id=${id}>edit</button></td>`;
             tableHtml += "</tr>" 
 
 

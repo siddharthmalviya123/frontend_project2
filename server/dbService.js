@@ -104,7 +104,48 @@ class DbService {
 }
 
 
+async updateNameById(id,name)
+{
+    try{
+        id= parseInt(id,10)
+        const response= await new Promise((resolve, reject)=>{
+            const query = "UPDATE names SET name=? WHERE id=?";
+            connection.query(query, [name,id],(err,result)=>{
+                if(err) reject(new Error(err.message));
+                resolve(result.affectedRows);
+            })
+        })
+        return response===1 ?true :false;
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+}
 
+
+
+async searchByName(name)
+{
+    try{
+        console.log("first call")
+        const response = await new Promise((resolve, reject)=>{
+
+            const query ="SELECT * FROM names WHERE name  =? ;";
+            connection.query(query ,[name],  (err,results)=>{
+
+                if(err) reject (new Error (err.message));
+                resolve(results);
+            }); 
+        })
+        //  console.log(response);
+         return response;
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
 
 }
 
